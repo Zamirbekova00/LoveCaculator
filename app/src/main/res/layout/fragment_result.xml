@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/img_result"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         android:layout_gravity="center"
         android:src="@drawable/ic_result" />
 
@@ -78,10 +78,9 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:backgroundTint="#FF0000"
-        android:text="Try again"
+        android:text="@string/try_again"
         android:textAllCaps="false"
         android:textColor="@color/white"
         app:cornerRadius="20dp" />
-
 
 </LinearLayout>

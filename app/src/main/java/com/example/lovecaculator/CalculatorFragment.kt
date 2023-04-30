@@ -10,6 +10,7 @@ import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import com.example.lovecaculator.databinding.FragmentCalculatorBinding
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
 
 class CalculatorFragment : Fragment() {
@@ -19,7 +20,7 @@ class CalculatorFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentCalculatorBinding.inflate(inflater, container, false)
+        binding = FragmentCalculatorBinding.inflate(layoutInflater)
         return binding.root
     }
 
@@ -31,17 +32,17 @@ class CalculatorFragment : Fragment() {
     private fun initClickers() {
         with(binding) {
             btnCalculate.setOnClickListener {
-                RetrofitService().api.percentageNames(
-                    etMe.text.toString(), etYou.text.toString()
-                ).enqueue(object : retrofit2.Callback<LoveModel> {
+                RetrofitService().api.percentageName(
+                    etFirstName.text.toString(), etSecondName.text.toString()
+                ).enqueue(object : Callback<LoveModel> {
                     override fun onResponse(call: Call<LoveModel>, response: Response<LoveModel>) {
                         if (response.isSuccessful) {
                             Log.e("kalbusha", "onResponse: ${response.body()}")
                             findNavController().navigate(
                                 R.id.resultFragment, bundleOf("result" to response.body())
                             )
-                            etMe.text.clear()
-                            etYou.text.clear()
+                            etFirstName.text.clear()
+                            etSecondName.text.clear()
                         }
                     }
 
