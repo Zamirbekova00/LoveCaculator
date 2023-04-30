@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.lovecaculator.databinding.FragmentResultBinding
+import com.example.remote.LoveModel
 
 class ResultFragment : Fragment() {
     private lateinit var binding: FragmentResultBinding

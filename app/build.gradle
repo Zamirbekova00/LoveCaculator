@@ -51,4 +51,8 @@ dependencies {
 
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+
+    def fragment_version = "1.5.7"
+    implementation("androidx.fragment:fragment-ktx:$fragment_version")
+
 }

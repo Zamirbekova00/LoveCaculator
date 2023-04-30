@@ -7,14 +7,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.example.LoveViewModel
 import com.example.lovecaculator.databinding.FragmentCalculatorBinding
+import com.example.remote.LoveModel
+import com.example.remote.RetrofitService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class CalculatorFragment : Fragment() {
     private lateinit var binding: FragmentCalculatorBinding
+
+    val viewModel: LoveViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,24 +39,10 @@ class CalculatorFragment : Fragment() {
     private fun initClickers() {
         with(binding) {
             btnCalculate.setOnClickListener {
-                RetrofitService().api.percentageName(
-                    etFirstName.text.toString(), etSecondName.text.toString()
-                ).enqueue(object : Callback<LoveModel> {
-                    override fun onResponse(call: Call<LoveModel>, response: Response<LoveModel>) {
-                        if (response.isSuccessful) {
-                            Log.e("kalbusha", "onResponse: ${response.body()}")
-                            findNavController().navigate(
-                                R.id.resultFragment, bundleOf("result" to response.body())
-                            )
-                            etFirstName.text.clear()
-                            etSecondName.text.clear()
-                        }
+                viewModel.liveLove(etFirstName.text.toString(), etSecondName.text.toString())
+                    .observe(viewLifecycleOwner) { loveModel ->
+                        Log.e("kalbusha", "initClickers: ${loveModel}")
                     }
-
-                    override fun onFailure(call: Call<LoveModel>, t: Throwable) {
-                        Log.e("kalbusha", "onFailure:${t.message} ")
-                    }
-                })
             }
         }
     }
