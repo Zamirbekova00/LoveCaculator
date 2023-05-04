@@ -6,18 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
 import com.example.LoveViewModel
 import com.example.lovecaculator.databinding.FragmentCalculatorBinding
-import com.example.remote.LoveModel
-import com.example.remote.RetrofitService
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CalculatorFragment : Fragment() {
     private lateinit var binding: FragmentCalculatorBinding
 
