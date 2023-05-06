@@ -1,7 +1,7 @@
 package com.example.onBoard
 
 data class OnBoard (
-    val title : String? = null,
-    val desc : String? = null,
-    val image : Int? = null
+    var title : String? = null,
+    var desc : String? = null,
+    var image : Int? = null
         )

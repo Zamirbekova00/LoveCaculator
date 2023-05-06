@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.example.App
 import com.example.LoveViewModel
 import com.example.lovecaculator.databinding.FragmentCalculatorBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,9 +34,13 @@ class CalculatorFragment : Fragment() {
 
     private fun initClickers() {
         with(binding) {
+            btnHistory.setOnClickListener {
+                findNavController().navigate(R.id.historyFragment)
+            }
             btnCalculate.setOnClickListener {
                 viewModel.liveLove(etFirstName.text.toString(), etSecondName.text.toString())
                     .observe(viewLifecycleOwner) { loveModel ->
+                        App.appDatabase.getDao().insert(loveModel)
                         Log.e("kalbusha", "initClickers: ${loveModel}")
                     }
             }

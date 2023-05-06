@@ -13,7 +13,7 @@
         android:layout_height="220dp"
         android:layout_gravity="center"
         android:layout_marginTop="24dp"
-        android:src="@drawable/ic_heart" />
+        android:src="@drawable/ic_photo_result" />
 
     <TextView
         android:id="@+id/tv_love_calculate"
@@ -22,7 +22,7 @@
         android:layout_marginStart="14dp"
         android:layout_marginTop="8dp"
         android:text="@string/love_calculator"
-        android:textColor="@color/blue"
+        android:textColor="#CD183BFD"
         android:textSize="34sp"
         android:textStyle="bold" />
 
@@ -79,9 +79,19 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="24dp"
-        android:backgroundTint="#3F51B5"
+        android:backgroundTint="@color/darkBlue"
         android:text="@string/calculate"
         android:textAllCaps="false"
         app:cornerRadius="20dp" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#3F51B5"
+        android:text="@string/history"
+        android:textAllCaps="false"
+        app:cornerRadius="20dp" />
 </LinearLayout>
