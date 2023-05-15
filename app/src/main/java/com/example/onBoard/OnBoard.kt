@@ -1,7 +1,7 @@
 package com.example.onBoard
 
 data class OnBoard (
-    var title : String? = null,
-    var desc : String? = null,
-    var image : Int? = null
+    val title : String? = null,
+    val desc : String? = null,
+    val lottie : Int = 0
         )
